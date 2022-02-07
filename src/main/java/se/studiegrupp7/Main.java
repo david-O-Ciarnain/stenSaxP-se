@@ -10,6 +10,7 @@ public class Main {
         menu.display();
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
+
         menu.chooses(input);
         boolean menuRunning = true;
         while (menuRunning) {
@@ -21,7 +22,9 @@ public class Main {
                 menu = new ScoreMenu();
                 menu.display();
                 input = scanner.nextInt();
+                scanner.nextLine();
                 menu.chooses(input);
+
             }
             if (input == 3) {
                 menuRunning = false;

@@ -2,6 +2,8 @@ package se.studiegrupp7;
 
 public class StartMeny implements Menu{
 
+    Menu menu = new ScoreMenu();
+
     @Override
     public void display() {
         System.out.println("press 1 to play game");
