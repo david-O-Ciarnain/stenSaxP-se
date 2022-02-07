@@ -1,34 +1,34 @@
 package se.studiegrupp7;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
-
-
-   StartMenu startMenu = new StartMenu();
+        Menu menu = new StartMeny();
+        menu.display();
         Scanner scanner = new Scanner(System.in);
-        startMenu.display();
         int input = scanner.nextInt();
-        startMenu.startMenu(input);
 
+        menu.chooses(input);
+        boolean menuRunning = true;
+        while (menuRunning) {
 
+            if (input == 1) {
 
+            }
+            if (input == 2) {
+              Menu menu1 = new ScoreMenu();
+                menu1.display();
+                input = scanner.nextInt();
+                scanner.nextLine();
+                menu1.chooses(input);
 
-            HighScore highScore = new HighScore();
-            Scanner scanner2 = new Scanner(System.in);
-            highScore.DisplayScoreMenu();
-            int input2 = scanner.nextInt();
-           highScore.ScoreMenu(input2);
-
-
+            }
+            if (input == 3) {
+                menuRunning = false;
+            }
         }
-
-
     }
-
-
-
+}
