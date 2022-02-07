@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="stensaxpåste" />
         <module name="stenSaxP-se" />
+        <module name="stenSaxPåste" />
       </profile>
     </annotationProcessing>
   </component>
