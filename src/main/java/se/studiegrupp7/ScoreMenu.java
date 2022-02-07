@@ -1,6 +1,8 @@
 package se.studiegrupp7;
 
 public class ScoreMenu implements Menu {
+
+    Menu menu = new StartMeny();
     @Override
     public void display() {
 
@@ -16,7 +18,7 @@ public class ScoreMenu implements Menu {
         switch (input) {
             case 1 -> System.out.println("player stat");
             case 2 -> System.out.println("total stat");
-            case 3 -> System.out.println("to start menu");
+            case 3 -> menu.display();
         }
     }
 }
