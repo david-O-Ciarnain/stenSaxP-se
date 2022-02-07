@@ -19,11 +19,11 @@ public class Main {
 
             }
             if (input == 2) {
-                menu = new ScoreMenu();
-                menu.display();
+              Menu menu1 = new ScoreMenu();
+                menu1.display();
                 input = scanner.nextInt();
                 scanner.nextLine();
-                menu.chooses(input);
+                menu1.chooses(input);
 
             }
             if (input == 3) {
