@@ -1,7 +1,9 @@
 package se.studiegrupp7;
 
-public class StartMeny implements Menu{
+import java.util.Scanner;
 
+public class StartMeny implements Menu{
+Scanner scanner = new Scanner(System.in);
 
     @Override
     public void display() {
@@ -13,15 +15,14 @@ public class StartMeny implements Menu{
     @Override
     public void chooses(int input) {
         switch (input) {
-            case 1:
-                System.out.println("game is playing");
-            break;
-            case 2:
-                System.out.println("this is your highScore");
-            break;
-            case 3:
-                System.out.println("you have exit the game ");
-            break;
+            case 1 -> System.out.println("game is playing");
+            case 2 -> {
+                Menu score = new ScoreMenu();
+                score.display();
+                input = scanner.nextInt();
+                score.chooses(input);
+            }
+            case 3 -> System.out.println("you have exit the game ");
         }
 
     }

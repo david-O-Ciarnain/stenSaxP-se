@@ -18,13 +18,19 @@ public class ScoreMenu implements Menu {
 
     @Override
     public void chooses(int input) {
-      /*  switch (input) {
+
+        switch (input) {
             case 1 -> System.out.println("player stat");
             case 2 -> System.out.println("total stat");
-            case 3 -> menu.display();
-        }*/
+            case 3 -> {
+                menu.display();
+                input = scanner.nextInt();
+                menu.chooses(input);
+            }
+        }
 
-        boolean menuRunning = true;
+
+      /*  boolean menuRunning = true;
         while (menuRunning) {
 
             if (input == 1) {
@@ -41,6 +47,6 @@ public class ScoreMenu implements Menu {
 
                 menu.chooses(input);
             }
-        }
+        }*/
     }
 }

@@ -1,30 +1,10 @@
 package se.studiegrupp7;
+
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
-
-
-
-   StartMenu startMenu = new StartMenu();
-        Scanner scanner = new Scanner(System.in);
-        startMenu.display();
-        int input = scanner.nextInt();
-        startMenu.startMenu(input);
-
-
-
-
-            HighScore highScore = new HighScore();
-            Scanner scanner2 = new Scanner(System.in);
-            highScore.DisplayScoreMenu();
-            int input2 = scanner.nextInt();
-           highScore.ScoreMenu(input2);
-
-
-        }
-
+    public static void main(String[] args) {
 
         Menu menu = new StartMeny();
         menu.display();
@@ -39,11 +19,11 @@ public class Main {
 
             }
             if (input == 2) {
-                menu = new ScoreMenu();
-                menu.display();
+              Menu menu1 = new ScoreMenu();
+                menu1.display();
                 input = scanner.nextInt();
                 scanner.nextLine();
-                menu.chooses(input);
+                menu1.chooses(input);
 
             }
             if (input == 3) {
@@ -51,6 +31,4 @@ public class Main {
             }
         }
     }
-
-
-
+}
