@@ -18,16 +18,27 @@ public class ScoreMenu implements Menu {
 
     @Override
     public void chooses(int input) {
+        Menu menu1 = new ScoreMenu();
 
         switch (input) {
-            case 1 -> System.out.println("player stat");
-            case 2 -> System.out.println("total stat");
+            case 1 -> {
+                System.out.println("player stat");
+                menu1.display();
+                input = scanner.nextInt();
+                menu1.chooses(input);
+            }
+            case 2 -> {
+                System.out.println("total stat");
+                menu1.display();
+                input = scanner.nextInt();
+                menu1.chooses(input);
+            }
             case 3 -> {
                 menu.display();
                 input = scanner.nextInt();
                 menu.chooses(input);
             }
-        }
+
 
 
       /*  boolean menuRunning = true;
@@ -48,5 +59,6 @@ public class ScoreMenu implements Menu {
                 menu.chooses(input);
             }
         }*/
+        }
     }
 }

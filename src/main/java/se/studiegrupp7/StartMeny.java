@@ -2,8 +2,8 @@ package se.studiegrupp7;
 
 import java.util.Scanner;
 
-public class StartMeny implements Menu{
-Scanner scanner = new Scanner(System.in);
+public class StartMeny implements Menu {
+    Scanner scanner = new Scanner(System.in);
 
     @Override
     public void display() {
@@ -14,16 +14,25 @@ Scanner scanner = new Scanner(System.in);
 
     @Override
     public void chooses(int input) {
-        switch (input) {
-            case 1 -> System.out.println("game is playing");
-            case 2 -> {
-                Menu score = new ScoreMenu();
-                score.display();
-                input = scanner.nextInt();
-                score.chooses(input);
-            }
-            case 3 -> System.out.println("you have exit the game ");
-        }
+            switch (input) {
+                case 1 -> {
+                    System.out.println("game is playing");
+                    Menu menu = new StartMeny();
+                    menu.display();
+                    input = scanner.nextInt();
+                    menu.chooses(input);
+                }
+                case 2 -> {
+                    Menu score = new ScoreMenu();
+                    score.display();
+                    input = scanner.nextInt();
+                    score.chooses(input);
+                }
+                case 3 -> {
+                    System.out.println("you have exit the game ");
+                    System.exit(0);
+                }
 
+            }
+        }
     }
-}
