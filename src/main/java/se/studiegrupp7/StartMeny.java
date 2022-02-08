@@ -32,7 +32,6 @@ public class StartMeny implements Menu {
                     System.out.println("you have exit the game ");
                     System.exit(0);
                 }
-
             }
         }
     }
