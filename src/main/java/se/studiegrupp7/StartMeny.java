@@ -16,11 +16,10 @@ public class StartMeny implements Menu {
     public void chooses(int input) {
             switch (input) {
                 case 1 -> {
-                    System.out.println("game is playing");
-                    Menu menu = new StartMeny();
-                    menu.display();
+                    Menu gamestarted = new GameStart();
+                    gamestarted.display();
                     input = scanner.nextInt();
-                    menu.chooses(input);
+                    gamestarted.chooses(input);
                 }
                 case 2 -> {
                     Menu score = new ScoreMenu();

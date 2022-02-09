@@ -11,5 +11,9 @@ public class Main {
         int input = scanner.nextInt();
         menu.chooses(input);
         }
+
+
     }
+
+
 
