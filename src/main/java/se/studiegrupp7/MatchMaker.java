@@ -2,11 +2,15 @@ package se.studiegrupp7;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MatchMaker {
 
+
     // String opponent, may be changed to our "player" class
     public static void startTournament(List<String> participants) {
+        Scanner scanner = new Scanner(System.in);
+        int input;
 
         if (participants.size() % 2 != 0) {
             participants.add(""); // If odd number of opponents add a dummy opponent
@@ -25,12 +29,16 @@ public class MatchMaker {
             int whichOpponent = round % opponentsSize; // sets our opponent for player.
 
             System.out.println(opponents.get(whichOpponent) + " vs " + player); // Prints who is facing player.
+            Menu gamestarted = new GameStart();
+            gamestarted.display();
+            input = scanner.nextInt();
+            gamestarted.chooses(input);
             // Thread thread1 = new playMatchPlayer(opponents.get(whichOpponent, player); // Play(Simulate) the match, in thread 1
 
             for (int idx = 1; idx < halfSize; idx++) {
                 int firstTeam = (round + idx) % opponentsSize;
                 int secondTeam = (round  + opponentsSize - idx) % opponentsSize;
-                //System.out.println(opponents.get(firstTeam) + " vs " + opponents.get(secondTeam));
+                System.out.println(opponents.get(firstTeam) + " vs " + opponents.get(secondTeam));
                 // Thread thread2 = new playMatchBot(opponents.get(firstTeam), opponents.get(secondTeam); // In thread 2
             }
         }

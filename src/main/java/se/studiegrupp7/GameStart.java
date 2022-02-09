@@ -1,5 +1,6 @@
 package se.studiegrupp7;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class GameStart implements Menu{
@@ -31,10 +32,6 @@ public class GameStart implements Menu{
                 System.out.println("You win!");
                 winCount++;
                 System.out.println("Your score: " + winCount);
-                Menu game = new StartMeny();
-                game.display();
-                input = scanner.nextInt();
-                game.chooses(input);
             }
             case 3 -> {
                 move = "Scissors";
@@ -42,11 +39,60 @@ public class GameStart implements Menu{
                 System.out.println("You lose!");
                 winCount--;
                 System.out.println("Your score: " + winCount);
-                Menu game = new StartMeny();
-                game.display();
-                input = scanner.nextInt();
-                game.chooses(input);
             }
+        }
+    }
+
+    public static void playGame(String opponent1, String opponent2){
+        Scanner scanner = new Scanner(System.in);
+        boolean noWinner = true;
+        while(true){
+            System.out.println("Select your move: 1 [Rock], 2 [Paper] or 3 [Scissors]");
+            String input = scanner.nextLine();
+            input.toLowerCase();
+            System.out.println("You chose " + input);
+            if (opponent1.getMove() == opponent2.getMove()){
+                noWinner = true;
+            }
+            switch (opponent1.getMove()){
+                case "rock":
+                    if (opponent2.getMove() == "scissors"){
+                        System.out.println("You win!");
+                        opponent1.score();
+                        noWinner = false;
+                    }
+                    else{
+                        System.out.println("You lose!");
+                        opponent2.score();
+                        noWinner = false;
+                    }
+                    break;
+                case "paper":
+                    if (opponent2.getMove() == "rock"){
+                        System.out.println("You win!");
+                        opponent1.score();
+                        noWinner = false;
+                    }
+                    else{
+                        System.out.println("You lose!");
+                        opponent2.score();
+                        noWinner = false;
+                    }
+                    break;
+                case "scissors":
+                    if (opponent2.getMove() == "paper"){
+                        System.out.println("You win!");
+                        opponent1.score();
+                        noWinner = false;
+                    }
+                    else{
+                        System.out.println("You lose!");
+                        opponent2.score();
+                        noWinner = false;
+                    }
+                    break;
+            }
+
         }
     }
 }
