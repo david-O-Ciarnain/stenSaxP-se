@@ -5,13 +5,12 @@ import java.util.Objects;
 public class TestBot {
 
     String move = "Rock";
-    int winCount;
 
     public String getMove() {
         return move;
     }
 
-    public void makeMove(String playerMove){
+   /* public static void makeMove(String playerMove){
         if (Objects.equals(playerMove, "Scissors")){
             winCount++;
         }
@@ -22,5 +21,5 @@ public class TestBot {
             System.out.println("It's a draw. Try again.");
         }
 
-    }
+    }*/
 }

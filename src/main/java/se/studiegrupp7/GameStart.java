@@ -10,6 +10,7 @@ public class GameStart implements Menu{
         System.out.println("Select your move: 1 [Rock], 2 [Paper] or 3 [Scissors]");
     }
 
+
     @Override
     public void chooses(int input) {
         String move;
