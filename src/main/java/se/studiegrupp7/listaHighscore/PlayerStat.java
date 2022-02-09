@@ -1,17 +1,18 @@
 package se.studiegrupp7.listaHighscore;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PlayerStat implements Serializable {
 
     private final String playerName;
     private int winCount = 0;
-    private int loseCount = 0;
-    private int first = 0;
     private int second = 0;
     private int third = 0;
     private int fourth = 0;
-    private Place place;
+    List<Integer> placeList = new ArrayList<>();
 
     public PlayerStat(String playerName) {
         this.playerName = playerName;
@@ -25,12 +26,9 @@ public class PlayerStat implements Serializable {
         return winCount;
     }
 
-    public int getLoseCount() {
-        return loseCount;
-    }
 
-    public int getFirst() {
-        return first;
+    public List<Integer> getPlaceList() {
+        return placeList;
     }
 
     public int getSecond() {
@@ -45,24 +43,14 @@ public class PlayerStat implements Serializable {
         return fourth;
     }
 
-    public Place getPlace() {
-        return place;
-    }
-
-    public void setPlace(Place place) {
-        this.place = place;
-    }
-
     @Override
     public String toString() {
         return "PlayerStat{" +
-                "playerName='" + playerName + '\'' +
-                ", winCount=" + winCount +
-                ", loseCount=" + loseCount +
-                ", first=" + first +
-                ", second=" + second +
-                ", third=" + third +
-                ", fourth=" + fourth +
+                "playerName=' " + playerName + '\'' +
+                ", winCount= " + winCount +
+                ", second= " + second +
+                ", third= " + third +
+                ", fourth= " + fourth +
                 '}';
     }
 
@@ -70,43 +58,34 @@ public class PlayerStat implements Serializable {
         int count = this.winCount;
         count++;
         this.winCount = count;
-    }
-
-    void countLose() {
-        int count = this.loseCount;
-        count++;
-        this.loseCount = count;
-    }
-
-    void countFirst() {
-        int count = this.first;
-        count++;
-        this.first = count;
+        placeList.add(count);
     }
 
     void countSecond() {
         int count = this.second;
-        count++;
+        count ++;
         this.second = count;
+        placeList.add(count);
     }
 
     void countThird() {
         int count = this.third;
-        count++;
+        count ++;
         this.third = count;
+        placeList.add(count);
     }
 
     void countFourth() {
         int count = this.fourth;
-        count++;
+        count ++;
         this.fourth = count;
+        placeList.add(count);
     }
 
+
 }
 
-enum Place {
-    FIRST, SECOND, THIRD, FOURTH
-}
+
 
 
 
