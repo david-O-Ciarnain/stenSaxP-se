@@ -1,25 +1,43 @@
 package se.studiegrupp7;
 
-import java.util.Objects;
-
 public class TestBot {
 
-    String move = "Rock";
+    String name;
+    String move;
+    int score;
+
+    public TestBot(String name, String move, int score) {
+        this.name = name;
+        this.move = move;
+        this.score = score;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public String getMove() {
         return move;
     }
 
-   /* public static void makeMove(String playerMove){
-        if (Objects.equals(playerMove, "Scissors")){
-            winCount++;
-        }
-        else if (Objects.equals(playerMove, "Paper")){
-            winCount--;
-        }
-        else if (Objects.equals(playerMove, "Rock")){
-            System.out.println("It's a draw. Try again.");
-        }
+    public int getScore() {
+        return score;
+    }
 
-    }*/
+    @Override
+    public String toString() {
+        return "TestBot{" +
+                "name='" + name + '\'' +
+                ", move='" + move + '\'' +
+                ", score=" + score +
+                '}';
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setMove(String move) {
+        this.move = move;
+    }
 }
