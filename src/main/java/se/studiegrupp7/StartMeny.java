@@ -1,5 +1,7 @@
 package se.studiegrupp7;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StartMeny implements Menu {
@@ -16,8 +18,20 @@ public class StartMeny implements Menu {
     public void chooses(int input) {
             switch (input) {
                 case 1 -> {
+
                     Menu gamestarted = new GameStart();
                     gamestarted.display();
+
+                    List<String> participants = new ArrayList<>();
+                    participants.add("Player1");
+                    participants.add("Bot1");
+                    participants.add("Bot2");
+                    participants.add("Bot3");
+
+                    MatchMaker.startTournament(participants);
+                    Menu menu = new StartMeny();
+                    menu.display();
+
                     input = scanner.nextInt();
                     gamestarted.chooses(input);
                 }

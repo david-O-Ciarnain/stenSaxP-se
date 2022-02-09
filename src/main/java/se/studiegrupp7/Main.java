@@ -10,10 +10,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
         menu.chooses(input);
+
         }
 
 
+
     }
+}
 
 
 
