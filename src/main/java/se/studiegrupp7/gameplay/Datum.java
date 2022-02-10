@@ -7,26 +7,14 @@ public class Datum implements Behaviors {
     public void chooseBehavior() {
         LocalTime localTime = LocalTime.now();
 
-        switch (localTime.getMinute()) {
+        if (localTime.getMinute() <= 20) {
+            System.out.println("");
 
-            case 1-19 :
-                System.out.println();
+        } else if (localTime.getMinute() > 20 && localTime.getMinute() <= 40) {
+            System.out.println("");
 
-                break;
-
-            case 20-41:
-                System.out.println();
-                break;
-
-            case 42-59:
-                System.out.println();
-                break;
-
-
+        } else  {
+            System.out.println("");
         }
 
-
-
-    }
-
-}
+    }}
