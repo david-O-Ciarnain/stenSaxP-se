@@ -23,17 +23,7 @@ public class StartMeny implements Menu {
     public void chooses(int input) {
             switch (input) {
                 case 1 -> {
-
-                    List<CreateBot> participants = new ArrayList<>();
-                    participants.add(new CreateBot(new Player(), "Player", 0));
-                    participants.add(new CreateBot(new Datum(), "Minute Man", 0));
-                    participants.add(new CreateBot(new Vokaler(), "Vowel Woman", 0));
-                    participants.add(new CreateBot(new RandomBot(), "Random Randy", 0));
-                    //participants.add(new TestBot("Frida", randomMove(), 0));
-
-                    MatchMaker.startTournament(participants);
-                    participants.forEach(System.out::println);
-
+                    MatchMaker.startTournament();
                     Menu menu = new StartMeny();
                     menu.display();
                     input = scanner.nextInt();

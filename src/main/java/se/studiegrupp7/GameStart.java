@@ -2,8 +2,6 @@ package se.studiegrupp7;
 
 import se.studiegrupp7.gameplay.CreateBot;
 
-import java.util.Scanner;
-
 public class GameStart implements Runnable {
 
     CreateBot oppo1;
@@ -17,7 +15,7 @@ public class GameStart implements Runnable {
 
     @Override
     public void run() {
-        Scanner scanner = new Scanner(System.in);
+
         boolean noWinner = true;
 
         while (noWinner && numberOfDraws < 3) {

@@ -1,27 +1,22 @@
 package se.studiegrupp7;
 
-import se.studiegrupp7.gameplay.CreateBot;
-
+import se.studiegrupp7.gameplay.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class MatchMaker {
 
+    public static void startTournament() {
 
-    // String opponent, may be changed to our "player" class
-    public static void startTournament(List<CreateBot> participants) {
-        Scanner scanner = new Scanner(System.in);
-        int input;
-
-        /*if (participants.size() % 2 != 0) {
-            participants.add(new CreateBot("placeholder", "noMove", 0)); // If odd number of opponents add a dummy opponent
-            *//* OBS - DUMMY BOTEN MÅSTE TAS BORT FRÅN STATISK OCH MATCHER! *//*
-        }*/
+        List<CreateBot> participants = new ArrayList<>();
+        participants.add(new CreateBot(new Player(), "Player", 0));
+        participants.add(new CreateBot(new Datum(), "Minute Man", 0));
+        participants.add(new CreateBot(new Vokaler(), "Vowel Woman", 0));
+        participants.add(new CreateBot(new RandomBot(), "Random Randy", 0));
 
         List<CreateBot> opponents = new ArrayList<>(participants); // Add opponents to List
         opponents.remove(0); // Remove "player" from list
-        CreateBot player = participants.get(0); // Set player as a variable1
+        CreateBot player = participants.get(0); // Set player as a variable
 
         int opponentsSize = opponents.size(); // Our actual opponents list size.
         int numRounds = (participants.size() - 1); // Rounds needed to complete tournament, number of player+bots - 1.
@@ -52,5 +47,6 @@ public class MatchMaker {
                 }
             }
         }
+        participants.forEach(System.out::println);
     }
 }
