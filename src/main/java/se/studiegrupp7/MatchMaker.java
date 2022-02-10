@@ -28,7 +28,7 @@ public class MatchMaker {
         for (int round = 0; round < numRounds; round++) { // Start rounds
             int whichOpponent = round % opponentsSize; // sets our opponent for player.
 
-            System.out.println(opponents.get(whichOpponent).getName() + " vs " + player.getName()); // Prints who is facing player.
+            System.out.println(opponents.get(whichOpponent)/*.getName()*/ + " vs " + player/*.getName()*/); // Prints who is facing player.
             Thread thread1 = new Thread(new GameStart(player, opponents.get(whichOpponent))); // Play(Simulate) the match, in thread 1
             thread1.start();
             try {
