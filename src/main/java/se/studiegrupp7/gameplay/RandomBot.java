@@ -1,12 +1,13 @@
 package se.studiegrupp7.gameplay;
+
 import java.util.Random;
 
- class Randomm implements Behaviors {
+class RandomBot implements Behaviors {
      @Override
      public void chooseBehavior() {
 
-         Random valueRandom = new Random();
-         int number = valueRandom.nextInt(3) + 1;
+         Random valueRandomBot = new Random();
+         int number = valueRandomBot.nextInt(3) + 1;
 
          switch (number) {
              case 1:
