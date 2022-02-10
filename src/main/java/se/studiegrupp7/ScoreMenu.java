@@ -8,7 +8,7 @@ public class ScoreMenu implements Menu {
 
     @Override
     public void display() {
-        System.out.println("press 1 to player stat");
+        System.out.println("press 1 to players stat");
         System.out.println("press 2 for total stat");
         System.out.println("press 3 to back to start menu");
     }

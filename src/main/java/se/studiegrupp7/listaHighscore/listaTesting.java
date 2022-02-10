@@ -1,25 +1,24 @@
 package se.studiegrupp7.listaHighscore;
 
 
+import se.studiegrupp7.Menu;
+
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
-public class listaTesting {
+
+public class listaTesting  {
+
 
     public static void main(String[] args) {
 
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name?");
-        // String name = scanner.nextLine();
+        String name = scanner.nextLine();
 
 
-        List<PlayerStat> playerStatList = new ArrayList<>();
-
-        PlayerStat player = new PlayerStat("Sven");
+        PlayerStat player = new PlayerStat(name);
         PlayerStat date = new PlayerStat("Date");
         PlayerStat random = new PlayerStat("Random");
         PlayerStat vowels = new PlayerStat("vowels");
@@ -35,37 +34,71 @@ public class listaTesting {
         random.countFourth();
         vowels.countThird();
 
-      List<Integer> bestPlace = player.getPlaceList().stream().sorted(Comparator.comparing(Integer::intValue)).distinct().min(Integer::compareTo).stream().collect(Collectors.toList());
-      List<Integer>worstPlace = player.getPlaceList().stream().sorted(Comparator.comparing(Integer::intValue)).distinct().max(Integer::compareTo).stream().collect(Collectors.toList());
 
+        System.out.println("""
+                Witch player do you wanna check stat on?\s
+                press 1 for player stat\s
+                press 2 for Date bot stat\s
+                press 3 for Random bot stat\s
+                press 4 for vowels bot stat\s
+                press 5 for go back to start menu""");
 
-        playerStatList.add(player);
-        playerStatList.add(date);
-        playerStatList.add(random);
-        playerStatList.add(vowels);
+        int input = scanner.nextInt();
+        switch (input) {
+            case 1 -> {
+                bestPlace(player);
+                worstPlace(player);
+                averagePlace(player);
+            }
+            case 2 -> {
+                bestPlace(date);
+                worstPlace(date);
+                averagePlace(date);
+            }
+            case 3 -> {
+                bestPlace(random);
+                worstPlace(random);
+                averagePlace(random);
+            }
+            case 4 -> {
+                bestPlace(vowels);
+                worstPlace(vowels);
+                averagePlace(vowels);
+            }
+            case 5 -> {
 
-
-
-
-
-      /*  playerStatList.stream().min(Comparator.comparingInt(PlayerStat::getWinCount)
-                        .thenComparingInt(PlayerStat::getSecond)
-                        .thenComparingInt(PlayerStat::getThird)
-                        .thenComparingInt(PlayerStat::getFourth))
-                .ifPresent(System.out::println);*/
-
-        System.out.println("Witch player do you want to se stats on?");
-        String statInput = scanner.nextLine();
-
-
-        if (playerStatList.stream().anyMatch(playerStat -> playerStat.getPlayerName().equals(statInput))) {
-
-            List<PlayerStat> test = playerStatList.stream().filter(playerStat -> playerStat.getPlayerName().equals(statInput))
-                    .collect(Collectors.toList());
-
+            }
         }
 
 
     }
+
+
+    public static void bestPlace(PlayerStat stat) {
+
+        stat.getPlaceList().stream().min(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " best place is: " + x));
+    }
+
+    public static void worstPlace(PlayerStat stat) {
+
+        stat.getPlaceList().stream().max(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " worst place is: " + x));
+    }
+
+    public static void averagePlace(PlayerStat stat) {
+
+        stat.getPlaceList().stream()
+                .mapToDouble(Integer::doubleValue)
+                .average()
+                .ifPresent((i) -> {
+                    if (i > 1 && i < 1.5)
+                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Etta");
+                    else if (i > 1.51 && i < 2.5)
+                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Tvåa");
+                    else if (i > 2.51 && i < 3.5)
+                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Trea");
+                    else System.out.println(stat.getPlayerName() + " Average Placering: " + "Fyra");
+                });
+    }
+
 
 }
