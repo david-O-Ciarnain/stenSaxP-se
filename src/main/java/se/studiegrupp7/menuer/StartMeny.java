@@ -25,10 +25,10 @@ public class StartMeny implements Menu {
                 case 1 -> {
 
                     List<CreateBot> participants = new ArrayList<>();
-                    participants.add(new CreateBot(new Player(), "Player"));
-                    participants.add(new CreateBot(new Datum(), "Minute Man"));
-                    participants.add(new CreateBot(new Vokaler(), "Vowel Woman"));
-                    participants.add(new CreateBot(new RandomBot(), "Random Randy"));
+                    participants.add(new CreateBot(new Player(), "Player", 0));
+                    participants.add(new CreateBot(new Datum(), "Minute Man", 0));
+                    participants.add(new CreateBot(new Vokaler(), "Vowel Woman", 0));
+                    participants.add(new CreateBot(new RandomBot(), "Random Randy", 0));
                     //participants.add(new TestBot("Frida", randomMove(), 0));
 
                     MatchMaker.startTournament(participants);

@@ -14,13 +14,14 @@ public class CreateBot {
         return score;
     }
 
-    public CreateBot(Behaviors behaviors, String name){
+    public CreateBot(Behaviors behaviors, String name, int score){
         this.behaviors=behaviors;
         this.name = name;
+        this.score = score;
     }
 
-    public void executeBehaviors(){
-        behaviors.chooseBehavior();
+    public String executeBehaviors(){
+       return behaviors.chooseBehavior();
     }
 
 }
