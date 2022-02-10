@@ -1,7 +1,7 @@
 package se.studiegrupp7.listaHighscore;
 
 
-import se.studiegrupp7.Menu;
+
 
 import java.util.*;
 

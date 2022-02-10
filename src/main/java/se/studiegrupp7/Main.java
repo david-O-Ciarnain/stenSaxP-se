@@ -1,5 +1,8 @@
 package se.studiegrupp7;
 
+import se.studiegrupp7.menuer.Menu;
+import se.studiegrupp7.menuer.StartMeny;
+
 import java.util.Scanner;
 
 public class Main {

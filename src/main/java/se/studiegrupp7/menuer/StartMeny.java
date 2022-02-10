@@ -1,4 +1,4 @@
-package se.studiegrupp7;
+package se.studiegrupp7.menuer;
 
 import java.util.Scanner;
 
