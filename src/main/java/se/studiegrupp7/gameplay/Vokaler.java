@@ -24,7 +24,6 @@ public class Vokaler implements Behaviors {
         switch (counter) {
             case 0:
                 System.out.println("Sten");
-
                 break;
 
             case 1:
@@ -34,8 +33,6 @@ public class Vokaler implements Behaviors {
             default:
                 System.out.println("Påse");
                 break;
-
-
         }
     }
 }
