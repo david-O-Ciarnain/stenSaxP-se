@@ -27,6 +27,8 @@ public class StartMeny implements Menu {
                     participants.add(new TestBot("Fritjof", randomMove(), 0));
 
                     MatchMaker.startTournament(participants);
+                    participants.forEach(System.out::println);
+
                     Menu menu = new StartMeny();
                     menu.display();
                     input = scanner.nextInt();
