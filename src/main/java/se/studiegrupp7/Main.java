@@ -18,3 +18,13 @@ public class Main {
 
 
 
+
+            }
+            if (input == 3) {
+                menuRunning = false;
+            }
+        }
+
+
+    }
+}
