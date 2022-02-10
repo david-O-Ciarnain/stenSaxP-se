@@ -36,8 +36,6 @@ public class listaTesting {
         player.countWin();
 
 
-
-
         date.countFourth();
         random.countFourth();
         vowels.countThird();
@@ -52,27 +50,15 @@ public class listaTesting {
         String statInput = scanner.nextLine();
 
 
-
-
         if (playerStatList.stream().anyMatch(playerStat -> playerStat.getPlayerName().equals(statInput))) {
 
             List<PlayerStat> test = playerStatList.stream().filter(playerStat -> playerStat.getPlayerName().equals(statInput))
                     .collect(Collectors.toList());
 
-            test.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
-                .entrySet()
-                .stream()
-                    .map(Map.Entry::getKey)
-                .max(Map.Entry.comparingByValue())
-                .ifPresent(System.out::println);
-
-
-
-
-
-
-
-
+                test.stream().collect(Collectors.groupingBy(PlayerStat::getPlace))
+                        .entrySet()
+                        .stream()
+                        .
         }
 
 
