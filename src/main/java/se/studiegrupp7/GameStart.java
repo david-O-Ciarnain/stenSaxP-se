@@ -26,51 +26,32 @@ public class GameStart implements Runnable {
             if (oppo1.getMove().equals("noMove") || oppo2.getMove().equals("noMove")) {
                 break;
             }
+            simulateMatch();
 
-            switch (oppo1.getMove()){
-                case "rock":
-                    if (oppo1.getMove().equals(oppo2.getMove())) {
-                        System.out.println("It's a draw!");
-                        oppo1.setScore(oppo1.getScore() + 1);
-                        oppo2.setScore(oppo2.getScore() + 1);
-                    } else if (oppo2.getMove().equals("scissor")){
-                        System.out.println(oppo1.getName() + " wins!");
-                        oppo1.setScore(oppo1.getScore() + 2);
-                    } else {
-                        System.out.println(oppo2.getName() + " wins!");
-                        oppo2.setScore(oppo2.getScore() + 2);
-                    }
-                    noWinner = false;
-                    break;
-                case "paper":
-                    if (oppo1.getMove().equals(oppo2.getMove())) {
-                        System.out.println("It's a draw!");
-                        oppo1.setScore(oppo1.getScore() + 1);
-                        oppo2.setScore(oppo2.getScore() + 1);
-                    } else if (oppo2.getMove().equals("rock")){
-                        System.out.println(oppo1.getName() + " wins!");
-                        oppo1.setScore(oppo1.getScore() + 2);
-                    } else {
-                        System.out.println(oppo2.getName() + " wins!");
-                        oppo2.setScore(oppo2.getScore() + 2);
-                    }
-                    noWinner = false;
-                    break;
-                case "scissor":
-                    if (oppo1.getMove().equals(oppo2.getMove())) {
-                        System.out.println("It's a draw!");
-                        oppo1.setScore(oppo1.getScore() + 1);
-                        oppo2.setScore(oppo2.getScore() + 1);
-                    } else if (oppo2.getMove().equals("paper")){
-                        System.out.println(oppo1.getName() + " wins!");
-                        oppo1.setScore(oppo1.getScore() + 2);
-                    } else {
-                        System.out.println(oppo2.getName() + " wins!");
-                        oppo2.setScore(oppo2.getScore() + 2);
-                    }
-                    noWinner = false;
-                    break;
-            }
         }
+    }
+
+    private boolean simulateMatch() {
+        switch (oppo1.getMove()){
+            case "rock":
+                if (oppo2.getMove().equals("scissor")){
+                    System.out.println(oppo1.getName() + " wins!");
+                    oppo1.setScore(oppo1.getScore() + 1);
+                }
+                return false;
+            case "paper":
+                if (oppo2.getMove().equals("rock")){
+                    System.out.println(oppo1.getName() + " wins!");
+                    oppo1.setScore(oppo1.getScore() + 1);
+                }
+                return false;
+            case "scissor":
+                if (oppo2.getMove().equals("paper")){
+                    System.out.println(oppo1.getName() + " wins!");
+                    oppo1.setScore(oppo1.getScore() + 1);
+                }
+                return false;
+        }
+        return true;
     }
 }
