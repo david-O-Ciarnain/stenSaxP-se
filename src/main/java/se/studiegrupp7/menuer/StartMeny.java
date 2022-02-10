@@ -2,6 +2,7 @@ package se.studiegrupp7.menuer;
 
 import se.studiegrupp7.MatchMaker;
 import se.studiegrupp7.TestBot;
+import se.studiegrupp7.gameplay.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +24,11 @@ public class StartMeny implements Menu {
             switch (input) {
                 case 1 -> {
 
-                    List<TestBot> participants = new ArrayList<>();
-                    participants.add(new TestBot("Player", randomMove(), 0));
-                    participants.add(new TestBot("Gunnar", randomMove(), 0));
-                    participants.add(new TestBot("Astrid", randomMove(), 0));
-                    participants.add(new TestBot("Fritjof", randomMove(), 0));
+                    List<CreateBot> participants = new ArrayList<>();
+                    participants.add(new CreateBot(new Player(), "Player"));
+                    participants.add(new CreateBot(new Datum(), "Minute Man"));
+                    participants.add(new CreateBot(new Vokaler(), "Vowel Woman"));
+                    participants.add(new CreateBot(new RandomBot(), "Random Randy"));
                     //participants.add(new TestBot("Frida", randomMove(), 0));
 
                     MatchMaker.startTournament(participants);

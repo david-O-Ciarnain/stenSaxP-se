@@ -4,17 +4,21 @@ import java.time.LocalTime;
 
 public class Datum implements Behaviors {
     @Override
-    public void chooseBehavior() {
+    public String chooseBehavior() {
         LocalTime localTime = LocalTime.now();
+        String move;
 
         if (localTime.getMinute() <= 20) {
-            System.out.println("");
+            move = "Rock";
+            return move.toLowerCase();
 
         } else if (localTime.getMinute() > 20 && localTime.getMinute() <= 40) {
-            System.out.println("");
+            move = "Paper";
+            return move.toLowerCase();
 
         } else  {
-            System.out.println("");
+            move = "Scissor";
+            return move.toLowerCase();
         }
 
     }

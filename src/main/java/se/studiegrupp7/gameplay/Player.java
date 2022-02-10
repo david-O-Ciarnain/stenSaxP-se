@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class Player implements Behaviors{
     @Override
-    public void chooseBehavior() {
+    public String chooseBehavior() {
         Scanner scanner = new Scanner(System.in);
-        String move = scanner.nextLine();
-
+        String move;
+        System.out.println("Select your move: [Rock], [Paper] or [Scissors]");
+        move = scanner.nextLine().toLowerCase();
+        System.out.println("You chose " + move);
+        return move;
+        }
     }
-}

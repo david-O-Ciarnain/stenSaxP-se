@@ -10,10 +10,11 @@ public class Vokaler implements Behaviors {
 
 
     @Override
-    public void chooseBehavior() {
-        String name = "Vikash";
+    public String chooseBehavior() {
+        String move;
+        CreateBot opponent = null;
         Pattern pattern = Pattern.compile("[aeiouy]");
-        Matcher matcher = pattern.matcher(name.toLowerCase());
+        Matcher matcher = pattern.matcher(opponent.getName().toLowerCase());
         int counter = 0;
         while (matcher.find()) {
             counter++;
@@ -23,16 +24,16 @@ public class Vokaler implements Behaviors {
 
         switch (counter) {
             case 0:
-                System.out.println("Sten");
-                break;
+                move = "Rock";
+                return move.toLowerCase();
 
             case 1:
-                System.out.println("Sax");
-                break;
+                move = "Paper";
+                return move.toLowerCase();
 
             default:
-                System.out.println("Påse");
-                break;
+                move = "Scissor";
+                return move.toLowerCase();
         }
     }
 }

@@ -2,30 +2,27 @@ package se.studiegrupp7.gameplay;
 
 import java.util.Random;
 
-class RandomBot implements Behaviors {
-     @Override
-     public void chooseBehavior() {
+public class RandomBot implements Behaviors {
+    @Override
+    public String chooseBehavior() {
 
-         Random valueRandomBot = new Random();
-         int number = valueRandomBot.nextInt(3) + 1;
+        Random valueRandomBot = new Random();
+        int number = valueRandomBot.nextInt(3) + 1;
+        String move;
 
-         switch (number) {
-             case 1:
-                 System.out.println();
+        switch (number) {
+            case 1:
+                move = "Rock";
+                return move.toLowerCase();
 
-                 break;
+            case 2:
+                move = "Paper";
+                return move.toLowerCase();
 
-             case 2:
-                 System.out.println();
-                 break;
+            default:
+                move = "Scissor";
+                return move.toLowerCase();
 
-             case 3:
-                 System.out.println();
-                 break;
-
-
-         }
-
-
-     }
- }
+        }
+    }
+}
