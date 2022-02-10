@@ -1,44 +1,41 @@
 package se.studiegrupp7.gameplay;
 
-import javax.lang.model.element.Name;
-import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.compile;
 
-public class Vokaler implements Behaviors{
+public class Vokaler implements Behaviors {
+
 
 
     @Override
     public void chooseBehavior() {
+        String name = "Vikash";
+        Pattern pattern = Pattern.compile("[aeiouy]");
+        Matcher matcher = pattern.matcher(name.toLowerCase());
+        int counter = 0;
+        while (matcher.find()) {
+            counter++;
+        }
+        System.out.println("Occurences found: " + counter);
 
-        Pattern pattern1 = compile("([aeiouy]\\w*){1,}");
-        Pattern pattern2 = compile("([aeiouy]\\w*){2,}");
-        Pattern pattern3 = compile("([aeiouy]\\w*){3,}");
 
-        Pattern pattern = Pattern.compile("([aeiouy]\\w*){2,}");
-        Matcher matcher = pattern.matcher(Name.Usernam);
-
-
-      ;   switch (Name.Username) {
-            case pattern1 :
-                System.out.println();
+        switch (counter) {
+            case 0:
+                System.out.println("Sten");
 
                 break;
 
-            case pattern2 :
-                System.out.println();
+            case 1:
+                System.out.println("Sax");
                 break;
 
-            case pattern3 :
-                System.out.println();
+            default:
+                System.out.println("Påse");
                 break;
 
 
         }
-
-
-
     }
 }

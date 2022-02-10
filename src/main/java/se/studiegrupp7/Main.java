@@ -1,10 +1,21 @@
 package se.studiegrupp7;
 
+import se.studiegrupp7.gameplay.Behaviors;
+import se.studiegrupp7.gameplay.Vokaler;
+
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        Behaviors chooseBehavior = new Vokaler();
+        chooseBehavior.chooseBehavior();
+
+
+
+
+
 
         Menu menu = new StartMeny();
         menu.display();
