@@ -2,21 +2,19 @@ package se.studiegrupp7.listaHighscore;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class PlayerStat implements Serializable {
 
     private final String playerName;
-    private int winCount = 0;
-    private int second = 0;
-    private int third = 0;
-    private int fourth = 0;
+    private final int winCount = 1;
+    private final int second = 2;
+    private final int third = 3;
+    private final int fourth = 4;
     private Place place;
     List<Integer> placeList = new ArrayList<>();
-    List<Place>testing = new ArrayList<>();
+
 
     public PlayerStat(String playerName) {
         this.playerName = playerName;
@@ -29,7 +27,6 @@ public class PlayerStat implements Serializable {
     public int getWinCount() {
         return winCount;
     }
-
 
     public List<Integer> getPlaceList() {
         return placeList;
@@ -55,9 +52,7 @@ public class PlayerStat implements Serializable {
         this.place = place;
     }
 
-    public List<Place> getTesting() {
-        return testing;
-    }
+
 
     @Override
     public String toString() {
@@ -71,34 +66,34 @@ public class PlayerStat implements Serializable {
     }
 
     void countWin() {
-        int count = this.winCount;
+       /* int count = this.winCount;
         count+=4;
-        this.winCount = count;
-        placeList.add(count);
-        testing.add(place);
+        this.winCount = count;*/
+        placeList.add(winCount);
+
 
     }
 
     void countSecond() {
-        int count = this.second;
+     /*   int count = this.second;
         count +=3;
-        this.second = count;
-        placeList.add(count);
+        this.second = count;*/
+        placeList.add(second);
 
     }
 
     void countThird() {
-        int count = this.third;
+       /* int count = this.third;
         count +=2;
-        this.third = count;
-        placeList.add(count);
+        this.third = count;*/
+        placeList.add(third);
     }
 
     void countFourth() {
-        int count = this.fourth;
+       /* int count = this.fourth;
         count +=1;
-        this.fourth = count;
-        placeList.add(count);
+        this.fourth = count;*/
+        placeList.add(fourth);
     }
 
 
@@ -115,7 +110,7 @@ enum Place{
         this.number = number;
     }
 
-    private static Map<Integer, Place> map = new HashMap<>();
+
 
 }
 

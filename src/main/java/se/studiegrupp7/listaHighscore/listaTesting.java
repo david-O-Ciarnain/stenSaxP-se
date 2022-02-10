@@ -4,6 +4,7 @@ package se.studiegrupp7.listaHighscore;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class listaTesting {
@@ -23,12 +24,6 @@ public class listaTesting {
         PlayerStat random = new PlayerStat("Random");
         PlayerStat vowels = new PlayerStat("vowels");
 
-        playerStatList.add(player);
-        playerStatList.add(date);
-        playerStatList.add(random);
-        playerStatList.add(vowels);
-
-
         player.countSecond();
         player.countThird();
         player.countFourth();
@@ -40,11 +35,24 @@ public class listaTesting {
         random.countFourth();
         vowels.countThird();
 
-        playerStatList.stream().min(Comparator.comparingInt(PlayerStat::getWinCount)
+      List<Integer> bestPlace = player.getPlaceList().stream().sorted(Comparator.comparing(Integer::intValue)).distinct().min(Integer::compareTo).stream().collect(Collectors.toList());
+      List<Integer>worstPlace = player.getPlaceList().stream().sorted(Comparator.comparing(Integer::intValue)).distinct().max(Integer::compareTo).stream().collect(Collectors.toList());
+
+
+        playerStatList.add(player);
+        playerStatList.add(date);
+        playerStatList.add(random);
+        playerStatList.add(vowels);
+
+
+
+
+
+      /*  playerStatList.stream().min(Comparator.comparingInt(PlayerStat::getWinCount)
                         .thenComparingInt(PlayerStat::getSecond)
                         .thenComparingInt(PlayerStat::getThird)
                         .thenComparingInt(PlayerStat::getFourth))
-                .ifPresent(System.out::println);
+                .ifPresent(System.out::println);*/
 
         System.out.println("Witch player do you want to se stats on?");
         String statInput = scanner.nextLine();
@@ -55,12 +63,9 @@ public class listaTesting {
             List<PlayerStat> test = playerStatList.stream().filter(playerStat -> playerStat.getPlayerName().equals(statInput))
                     .collect(Collectors.toList());
 
-                test.stream().collect(Collectors.groupingBy(PlayerStat::getPlace))
-                        .entrySet()
-                        .stream()
-                        .
         }
 
 
     }
+
 }
