@@ -13,7 +13,7 @@ public class MatchMaker {
         int input;
 
         if (participants.size() % 2 != 0) {
-            participants.add(new TestBot("", "", 0)); // If odd number of opponents add a dummy opponent
+            participants.add(new TestBot("placeholder", "noMove", 0)); // If odd number of opponents add a dummy opponent
             /* OBS - DUMMY BOTEN MÅSTE TAS BORT FRÅN STATISK OCH MATCHER! */
         }
 

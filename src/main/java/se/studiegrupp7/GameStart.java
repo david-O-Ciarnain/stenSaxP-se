@@ -23,6 +23,9 @@ public class GameStart implements Runnable {
                 oppo1.setMove(scanner.nextLine().toLowerCase());
                 System.out.println("You chose " + oppo1.getMove());
             }
+            if (oppo1.getMove().equals("noMove") || oppo2.getMove().equals("noMove")) {
+                break;
+            }
 
             switch (oppo1.getMove()){
                 case "rock":
