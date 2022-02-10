@@ -15,16 +15,3 @@ public class Main {
         menu.chooses(input);
         }
     }
-
-
-
-
-            }
-            if (input == 3) {
-                menuRunning = false;
-            }
-        }
-
-
-    }
-}
