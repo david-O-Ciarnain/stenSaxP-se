@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class Vokaler implements Behaviors {
 
+    // Detta är ett behavior till vårt pattern //
+
     @Override
     public String chooseBehavior(String oppoName) {
         String move;

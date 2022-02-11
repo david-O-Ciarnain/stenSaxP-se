@@ -3,6 +3,9 @@ package se.studiegrupp7.gameplay;
 import java.time.LocalTime;
 
 public class Datum implements Behaviors {
+
+    // Detta är ett behavior till vårt pattern //
+
     @Override
     public String chooseBehavior(String oppoName) {
         LocalTime localTime = LocalTime.now();

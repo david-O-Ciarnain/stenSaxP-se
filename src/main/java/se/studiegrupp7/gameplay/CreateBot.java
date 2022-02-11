@@ -1,8 +1,8 @@
 package se.studiegrupp7.gameplay;
 
-import java.io.Serializable;
+public class CreateBot{
 
-public class CreateBot implements Serializable {
+    // Detta är "navigatorn" i vårt pattern //
 
     private final Behaviors behaviors;
     String name;

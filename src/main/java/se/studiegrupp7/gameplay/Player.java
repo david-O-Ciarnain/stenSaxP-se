@@ -3,6 +3,9 @@ package se.studiegrupp7.gameplay;
 import java.util.Scanner;
 
 public class Player implements Behaviors{
+
+    // Detta är ett behavior till vårt pattern //
+
     @Override
     public String chooseBehavior(String oppoName) {
         Scanner scanner = new Scanner(System.in);

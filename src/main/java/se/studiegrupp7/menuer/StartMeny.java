@@ -31,7 +31,7 @@ public class StartMeny implements Menu {
                     score.chooses(input, tournamentStats);
                 }
                 case 3 -> {
-                    System.out.println("you have exit the game ");
+                    System.out.println("you quit the game ");
                     System.exit(0);
                 }
             }

@@ -2,8 +2,6 @@ package se.studiegrupp7.menuer;
 
 
 import se.studiegrupp7.listaHighscore.PlayerStat;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -55,11 +53,6 @@ public class ScoreMenu implements Menu {
 
     public void playerStats(List<List<String>> test) {
 
-
-        String playerName = test.get(0).get(1);
-
-       /* System.out.println("Witch player do you want to se stats on?");
-        String name = scanner.nextLine();*/
         PlayerStat player = new PlayerStat("Player");
         PlayerStat minuteMan = new PlayerStat("Minute Man");
         PlayerStat randomRandy = new PlayerStat("Random Randy");

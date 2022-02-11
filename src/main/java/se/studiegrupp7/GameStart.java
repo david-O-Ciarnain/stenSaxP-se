@@ -19,10 +19,6 @@ public class GameStart implements Runnable {
         boolean noWinner = true;
 
         while (noWinner && numberOfDraws < 3) {
-            /*if (oppo1.getMove().equals("noMove") || oppo2.getMove().equals("noMove")) {
-                break;
-            }*/
-
             noWinner = simulateMatch();
 
             if (numberOfDraws == 3) {
