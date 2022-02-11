@@ -161,12 +161,12 @@ public class ScoreMenu implements Menu {
                 .average()
                 .ifPresent((i) -> {
                     if (i > 0 && i < 1.5)
-                        System.out.print(stat.getPlayerName() + ": Average placing: " + "First");
+                        System.out.print(stat.getPlayerName() + "'s average placing: " + "First");
                     else if (i > 1.51 && i < 2.5)
-                        System.out.print(stat.getPlayerName() + ": Average placing: " + "Second");
+                        System.out.print(stat.getPlayerName() + "'s average placing: " + "Second");
                     else if (i > 2.51 && i < 3.5)
-                        System.out.print(stat.getPlayerName() + ": Average placing: " + "Third");
-                    else System.out.print(stat.getPlayerName() + ": Average placing: " + "Fourth");
+                        System.out.print(stat.getPlayerName() + "'s average placing: " + "Third");
+                    else System.out.print(stat.getPlayerName() + "'s average placing: " + "Fourth");
                 });
     }
 }
