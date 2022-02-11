@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomBot implements Behaviors {
     @Override
-    public String chooseBehavior() {
+    public String chooseBehavior(String oppoName) {
 
         Random valueRandomBot = new Random();
         int number = valueRandomBot.nextInt(3) + 1;

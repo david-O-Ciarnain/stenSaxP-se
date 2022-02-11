@@ -20,7 +20,13 @@ public class CreateBot {
         this.score = score;
     }
 
-    public String executeBehaviors(){
-       return behaviors.chooseBehavior();
+    public String executeBehaviors(String oppoName){
+       return behaviors.chooseBehavior(oppoName);
+    }
+
+    @Override
+    public String toString() {
+        return  "Name='" + name + '\'' +
+                ", Score=" + score;
     }
 }

@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 public class Datum implements Behaviors {
     @Override
-    public String chooseBehavior() {
+    public String chooseBehavior(String oppoName) {
         LocalTime localTime = LocalTime.now();
         String move;
 

@@ -1,6 +1,6 @@
 package se.studiegrupp7;
 
-import se.studiegrupp7.gameplay.CreateBot;
+import se.studiegrupp7.gameplay.*;
 
 public class GameStart implements Runnable {
 
@@ -33,36 +33,36 @@ public class GameStart implements Runnable {
     }
 
     private boolean simulateMatch() {
-        switch (oppo1.executeBehaviors()){
+        switch (oppo1.executeBehaviors(oppo2.getName())){
             case "rock":
-                if (oppo2.executeBehaviors().equals("scissor")){
+                if (oppo2.executeBehaviors(oppo1.getName()).equals("scissor")){
                     System.out.println(oppo1.getName() + " wins!");
                     //oppo1.setScore(oppo1.getScore() + 1);
                     return false;
-                } else if (oppo2.executeBehaviors().equals("paper")){
-                    System.out.println(oppo2.getName() +  "wins!");
+                } else if (oppo2.executeBehaviors(oppo1.getName()).equals("paper")){
+                    System.out.println(oppo2.getName() +  " wins!");
                     //oppo2.setScore(oppo2.getScore() + 1);
                     return false;
                 }
                 break;
             case "paper":
-                if (oppo2.executeBehaviors().equals("rock")){
+                if (oppo2.executeBehaviors(oppo1.getName()).equals("rock")){
                     System.out.println(oppo1.getName() + " wins!");
                     //oppo1.setScore(oppo1.getScore() + 1);
                     return false;
-                } else if (oppo2.executeBehaviors().equals("scissor")){
-                    System.out.println(oppo2.getName() +  "wins!");
+                } else if (oppo2.executeBehaviors(oppo1.getName()).equals("scissor")){
+                    System.out.println(oppo2.getName() +  " wins!");
                     //oppo2.setScore(oppo2.getScore() + 1);
                     return false;
                 }
                 break;
             case "scissor":
-                if (oppo2.executeBehaviors().equals("paper")){
+                if (oppo2.executeBehaviors(oppo1.getName()).equals("paper")){
                     System.out.println(oppo1.getName() + " wins!");
                     //oppo1.setScore(oppo1.getScore() + 1);
                     return false;
-                } else if (oppo2.executeBehaviors().equals("rock")){
-                    System.out.println(oppo2.getName() +  "wins!");
+                } else if (oppo2.executeBehaviors(oppo1.getName()).equals("rock")){
+                    System.out.println(oppo2.getName() +  " wins!");
                     //oppo2.setScore(oppo2.getScore() + 1);
                     return false;
                 }
