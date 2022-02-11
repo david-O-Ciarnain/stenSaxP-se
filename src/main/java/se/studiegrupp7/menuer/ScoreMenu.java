@@ -1,14 +1,14 @@
 package se.studiegrupp7.menuer;
 
-import se.studiegrupp7.listaHighscore.PlayerStat;
-import java.util.ArrayList;
+
+
 import java.util.List;
 import java.util.Scanner;
 
 public class ScoreMenu implements Menu {
     Scanner scanner = new Scanner(System.in);
     Menu menu = new StartMeny();
-    List<List<String>> tournamentStats = new ArrayList<>();
+
 
     @Override
     public void display() {
@@ -48,13 +48,13 @@ public class ScoreMenu implements Menu {
         }
     }
     public void playerStats() {
-        /*Scanner scanner = new Scanner(System.in);
+        /* Scanner scanner = new Scanner(System.in);
 
         System.out.println("Witch player do you want to se stats on?");
-        String name = scanner.nextLine();*/
+        String name = scanner.nextLine();
 
 
-        var player = new PlayerStat("Sven");
+          var player = new PlayerStat("Sven");
         var date = new PlayerStat("Minute Man");
         var random = new PlayerStat("Random Randy");
         var vowels = new PlayerStat("Vowel Woman");
@@ -72,9 +72,9 @@ public class ScoreMenu implements Menu {
 
         date.countFourth();
         random.countFourth();
-        vowels.countThird();*/
+        vowels.countThird();
 
-        /*if(Objects.equals(name,"Sven".toLowerCase())){
+        if(Objects.equals(name,"Sven".toLowerCase())){
             bestPlace(player);
             worstPlace(player);
             averagePlace(player);
