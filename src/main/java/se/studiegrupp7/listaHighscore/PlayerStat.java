@@ -36,9 +36,6 @@ public class PlayerStat implements Serializable {
         return placeList;
     }
 
-
-
-
     @Override
     public String toString() {
         return "PlayerStat{" +
@@ -68,33 +65,6 @@ public class PlayerStat implements Serializable {
 
     public void countFourth() {
         placeList.add(fourth);
-    }
-
-
-    public static void bestPlace(PlayerStat stat) {
-
-        stat.getPlaceList().stream().min(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " best place is: " + x));
-    }
-
-    public static void worstPlace(PlayerStat stat) {
-
-        stat.getPlaceList().stream().max(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " worst place is: " + x));
-    }
-
-    public static void averagePlace(PlayerStat stat) {
-
-        stat.getPlaceList().stream()
-                .mapToDouble(Integer::doubleValue)
-                .average()
-                .ifPresent((i) -> {
-                    if (i > 1 && i < 1.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Etta");
-                    else if (i > 1.51 && i < 2.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Tvåa");
-                    else if (i > 2.51 && i < 3.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Trea");
-                    else System.out.println(stat.getPlayerName() + " Average Placering: " + "Fyra");
-                });
     }
 
 

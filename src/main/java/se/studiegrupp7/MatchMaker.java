@@ -10,20 +10,8 @@ import java.util.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MatchMaker  {
-
-    private final String playerName;
-    private final int winCount = 1;
-    private final int second = 2;
-    private final int third = 3;
-    private final int fourth = 4;
-    List<Integer> placeList = new ArrayList<>();
-
-    public MatchMaker(String playerName) {
-        this.playerName = playerName;
-    }
 
 
     public static List<String> startTournament() {
@@ -75,97 +63,11 @@ public class MatchMaker  {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy MMMM dd - HH:mm:ss");
         String dateTimeFormatted = dateTimeFormatter.format(dateTime);
 
-        List<CreateBot> sortedList = participants
-                .stream()
-                .sorted(Comparator.comparing(CreateBot::getScore).reversed())
-                .collect(Collectors.toList());
-
-        sortedList.forEach(System.out::println);
-
-
-        List<String> namesList = new ArrayList<>();
-        for (CreateBot createBot : sortedList) {
-            namesList.add(createBot.getName());
-        }
-        namesList.forEach(System.out::println);
-
-        MatchMaker playerFuckFace = new MatchMaker("nej");
-        MatchMaker minuteMan = new MatchMaker("Minute man");
-        MatchMaker randomRandy = new MatchMaker("Random Randy");
-        MatchMaker vowelWoman = new MatchMaker("Vowel Women");
-
-
-        //Player
-        if (Objects.equals(namesList.get(0), playerFuckFace.getPlayerName())) {
-            playerFuckFace.countWin();
-        }
-        if (Objects.equals(namesList.get(1), playerFuckFace.getPlayerName())) {
-            playerFuckFace.countSecond();
-        }
-        if (Objects.equals(namesList.get(2), playerFuckFace.getPlayerName())) {
-            playerFuckFace.countThird();
-        }
-        if (Objects.equals(namesList.get(3), playerFuckFace.getPlayerName())) {
-            playerFuckFace.countFourth();
-        }
-
-        //time Lord
-        if (namesList.get(0).equals(minuteMan.getPlayerName())) {
-            minuteMan.countWin();
-
-        }
-        if (namesList.get(1).equals(minuteMan.getPlayerName())) {
-            minuteMan.countSecond();
-        }
-        if (namesList.get(2).equals(minuteMan.getPlayerName())) {
-            minuteMan.countThird();
-        }
-        if (namesList.get(3).equals(minuteMan.getPlayerName())) {
-            minuteMan.countFourth();
-        }
-        // mr random
-        if (namesList.get(0).equals(randomRandy.getPlayerName())) {
-            randomRandy.countWin();
-        }
-        if (namesList.get(1).equals(randomRandy.getPlayerName())) {
-            randomRandy.countSecond();
-        }
-        if (namesList.get(2).equals(randomRandy.getPlayerName())) {
-            randomRandy.countThird();
-        }
-        if (namesList.get(3).equals(randomRandy.getPlayerName())) {
-            randomRandy.countFourth();
-        }
-
-        if (namesList.get(0).equals(vowelWoman.getPlayerName())) {
-            vowelWoman.countWin();
-
-
-        }
-        if (namesList.get(1).equals(vowelWoman.getPlayerName())) {
-            vowelWoman.countSecond();
-
-        }
-        if (namesList.get(2).equals(vowelWoman.getPlayerName())) {
-            vowelWoman.countThird();
-
-        }
-        if (namesList.get(3).equals(vowelWoman.getPlayerName())) {
-            vowelWoman.countFourth();
-
-        }
-
-        System.out.println();
-        playerFuckFace.getPlaceList().forEach(System.out::println);
-        System.out.println();
-        bestPlace(playerFuckFace);
-        worstPlace(playerFuckFace);
-        averagePlace(playerFuckFace);
+        List<String> sortedList = participants.stream().sorted(Comparator.comparing(CreateBot::getScore).reversed()).map(CreateBot::getName).toList();
 
 
 
-            List<String> sortedList2 = participants.stream().sorted(Comparator.comparing(CreateBot::getScore).reversed()).map(CreateBot::getName).toList();
-            List<String> tournamentStats = List.of(dateTimeFormatted, sortedList2.get(0), sortedList2.get(1), sortedList2.get(2), sortedList2.get(3));
+            List<String> tournamentStats = List.of(dateTimeFormatted, sortedList.get(0), sortedList.get(1), sortedList.get(2), sortedList.get(3));
             return tournamentStats;
 
 
@@ -173,72 +75,6 @@ public class MatchMaker  {
 
 
 
-    public String getPlayerName() {
 
-        return playerName;
-    }
-
-
-    public List<Integer> getPlaceList() {
-        return placeList;
-    }
-
-    @Override
-    public String toString() {
-        return "PlayerStat{" +
-                "playerName=' " + playerName + '\'' +
-                ", winCount= " + winCount +
-                ", second= " + second +
-                ", third= " + third +
-                ", fourth= " + fourth +
-                '}';
-    }
-
-    public void countWin() {
-
-        placeList.add(winCount);
-    }
-
-    public void countSecond() {
-
-        placeList.add(second);
-
-    }
-
-    public void countThird() {
-
-        placeList.add(third);
-    }
-
-    public void countFourth() {
-        placeList.add(fourth);
-    }
-
-
-    public static void bestPlace(MatchMaker stat) {
-
-        stat.getPlaceList().stream().min(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " best place is: " + x));
-    }
-
-    public static void worstPlace(MatchMaker stat) {
-
-        stat.getPlaceList().stream().max(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " worst place is: " + x));
-    }
-
-    public static void averagePlace(MatchMaker stat) {
-
-        stat.getPlaceList().stream()
-                .mapToDouble(Integer::doubleValue)
-                .average()
-                .ifPresent((i) -> {
-                    if (i > 0 && i < 1.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Etta");
-                    else if (i > 1.51 && i < 2.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Tvåa");
-                    else if (i > 2.51 && i < 3.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Trea");
-                    else System.out.println(stat.getPlayerName() + " Average Placering: " + "Fyra");
-                });
-    }
 }
 
