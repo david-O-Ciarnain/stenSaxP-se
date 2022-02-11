@@ -33,7 +33,7 @@ public class ScoreMenu implements Menu {
                 menuScore.chooses(input, tournamentStats);
             }
             case 2 -> {
-                System.out.println("Previous tournaments [Left to Right]");
+                System.out.println("Previous tournaments [First to Last]");
                 for (List<String> list:tournamentStats) {
                     for (String s:list) {
                         System.out.print(s + ", ");
@@ -56,15 +56,16 @@ public class ScoreMenu implements Menu {
     public void playerStats(List<List<String>> test) {
 
 
-        System.out.println("Witch player do you want to se stats on?");
-        String name = scanner.nextLine();
-        PlayerStat player = new PlayerStat("Sven");
+        String playerName = test.get(0).get(1);
+
+       /* System.out.println("Witch player do you want to se stats on?");
+        String name = scanner.nextLine();*/
+        PlayerStat player = new PlayerStat("Player");
         PlayerStat minuteMan = new PlayerStat("Minute Man");
         PlayerStat randomRandy = new PlayerStat("Random Randy");
         PlayerStat vowelWoman = new PlayerStat("Vowel Woman");
 
         for (List<String> s : test) {
-            for (int i = 1; i < s.size(); i++) {
 
                 if (Objects.equals(s.get(1), player.getPlayerName())) {
                     player.countWin();
@@ -125,21 +126,32 @@ public class ScoreMenu implements Menu {
 
                 }
             }
-            bestPlace(player);
-            worstPlace(player);
-            averagePlace(player);
+
+        bestPlace(player);
+        worstPlace(player);
+        averagePlace(player);
+        System.out.println();
+        bestPlace(minuteMan);
+        worstPlace(minuteMan);
+        averagePlace(minuteMan);
+        System.out.println();
+        bestPlace(randomRandy);
+        worstPlace(randomRandy);
+        averagePlace(randomRandy);
+        System.out.println();
+        bestPlace(vowelWoman);
+        worstPlace(vowelWoman);
+        averagePlace(vowelWoman);
         }
 
-
-    }
     public static void bestPlace(PlayerStat stat) {
 
-        stat.getPlaceList().stream().min(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " best place is: " + x));
+        stat.getPlaceList().stream().min(Integer::compareTo).ifPresent(x -> System.out.print(stat.getPlayerName() + " best place is: " + x + ", "));
     }
 
     public static void worstPlace(PlayerStat stat) {
 
-        stat.getPlaceList().stream().max(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " worst place is: " + x));
+        stat.getPlaceList().stream().max(Integer::compareTo).ifPresent(x -> System.out.print(stat.getPlayerName() + " worst place is: " + x + ", "));
     }
 
     public static void averagePlace(PlayerStat stat) {
@@ -149,12 +161,12 @@ public class ScoreMenu implements Menu {
                 .average()
                 .ifPresent((i) -> {
                     if (i > 0 && i < 1.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Etta");
+                        System.out.print(stat.getPlayerName() + ": Average placing: " + "First");
                     else if (i > 1.51 && i < 2.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Tvåa");
+                        System.out.print(stat.getPlayerName() + ": Average placing: " + "Second");
                     else if (i > 2.51 && i < 3.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Trea");
-                    else System.out.println(stat.getPlayerName() + " Average Placering: " + "Fyra");
+                        System.out.print(stat.getPlayerName() + ": Average placing: " + "Third");
+                    else System.out.print(stat.getPlayerName() + ": Average placing: " + "Fourth");
                 });
     }
 }

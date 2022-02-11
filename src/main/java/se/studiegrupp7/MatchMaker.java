@@ -15,12 +15,9 @@ public class MatchMaker  {
 
 
     public static List<String> startTournament() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What is your name?");
-        String userName = scanner.nextLine();
 
         List<CreateBot> participants = new ArrayList<>();
-        participants.add(new CreateBot(new Player(), userName, 0));
+        participants.add(new CreateBot(new Player(), "Player", 0));
         participants.add(new CreateBot(new Datum(), "Minute Man", 0));
         participants.add(new CreateBot(new Vokaler(), "Vowel Woman", 0));
         participants.add(new CreateBot(new RandomBot(), "Random Randy", 0));
