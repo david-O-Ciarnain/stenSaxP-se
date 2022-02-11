@@ -12,7 +12,7 @@ public class Datum implements Behaviors {
             move = "Rock";
             return move.toLowerCase();
 
-        } else if (localTime.getMinute() > 20 && localTime.getMinute() <= 40) {
+        } else if ( localTime.getMinute() <= 40) {
             move = "Paper";
             return move.toLowerCase();
 

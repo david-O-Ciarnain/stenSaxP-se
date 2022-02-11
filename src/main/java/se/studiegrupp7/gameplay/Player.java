@@ -7,7 +7,7 @@ public class Player implements Behaviors{
     public String chooseBehavior(String oppoName) {
         Scanner scanner = new Scanner(System.in);
         String move;
-        System.out.println("Select your move: [Rock], [Paper] or [Scissors]");
+        System.out.println("Select your move: [Rock], [Paper] or [Scissor]");
         move = scanner.nextLine().toLowerCase();
         System.out.println("You chose " + move);
         return move;

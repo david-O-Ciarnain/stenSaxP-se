@@ -2,7 +2,8 @@ package se.studiegrupp7.menuer;
 
 import se.studiegrupp7.listaHighscore.PlayerStat;
 
-import java.io.Serializable;
+import javax.imageio.IIOException;
+import java.io.*;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -20,7 +21,7 @@ public class ScoreMenu implements Menu, Serializable {
     }
 
     @Override
-    public void chooses(int input) {
+    public void chooses(int input) throws IOException {
         Menu menuScore = new ScoreMenu();
         switch (input) {
             case 1 -> {
@@ -44,18 +45,27 @@ public class ScoreMenu implements Menu, Serializable {
             }
         }
     }
-    public void playerStats(){
+    public void playerStats() throws IOException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What is your name?");
-        String userName = scanner.nextLine();
+
         System.out.println("Witch player do you want to se stats on?");
         String name = scanner.nextLine();
 
 
-        var player = new PlayerStat(userName);
-        var date = new PlayerStat("Date");
-        var random = new PlayerStat("Random");
-        var vowels = new PlayerStat("vowels");
+        var player = new PlayerStat("Sven");
+        var date = new PlayerStat("Minute Man");
+        var random = new PlayerStat("Random Randy");
+        var vowels = new PlayerStat("Vowel Woman");
+
+        FileInputStream fileInputStream = new FileInputStream("./scoreListFile.ser");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        try {
+            objectInputStream.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }objectInputStream.close();
+        fileInputStream.close();
+
 
         player.countSecond();
         player.countThird();
@@ -69,23 +79,23 @@ public class ScoreMenu implements Menu, Serializable {
         random.countFourth();
         vowels.countThird();
 
-        if(Objects.equals(name,userName.toLowerCase())){
+        if(Objects.equals(name,"Sven".toLowerCase())){
             bestPlace(player);
             worstPlace(player);
             averagePlace(player);
         }
 
-        if(Objects.equals(name, "Date".toLowerCase())){
+        if(Objects.equals(name, "Minute Man".toLowerCase())){
             bestPlace(date);
             worstPlace(date);
             averagePlace(date);
         }
-        if(Objects.equals(name,"Random".toLowerCase())){
+        if(Objects.equals(name,"Vowel Woman".toLowerCase())){
             bestPlace(random);
             worstPlace(random);
             averagePlace(random);
         }
-        if(Objects.equals(name,"vowels".toLowerCase())){
+        if(Objects.equals(name,"Random Randy".toLowerCase())){
             bestPlace(vowels);
             worstPlace(vowels);
             averagePlace(vowels);

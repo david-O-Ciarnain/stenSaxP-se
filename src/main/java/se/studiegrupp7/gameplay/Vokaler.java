@@ -16,17 +16,18 @@ public class Vokaler implements Behaviors {
         }
 
         switch (counter) {
-            case 0:
+            case 0 -> {
                 move = "Rock";
                 return move.toLowerCase();
-
-            case 1:
+            }
+            case 1 -> {
                 move = "Paper";
                 return move.toLowerCase();
-
-            default:
+            }
+            default -> {
                 move = "Scissor";
                 return move.toLowerCase();
+            }
         }
     }
 }
