@@ -4,5 +4,5 @@ import java.io.IOException;
 
 public interface Menu {
     void display();
-    void chooses(int input) throws IOException;
+    void chooses(int input);
 }

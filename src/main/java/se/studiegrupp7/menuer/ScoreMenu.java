@@ -1,15 +1,17 @@
 package se.studiegrupp7.menuer;
 
 import se.studiegrupp7.listaHighscore.PlayerStat;
+import se.studiegrupp7.listaHighscore.TournamentStats;
 
 import javax.imageio.IIOException;
 import java.io.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 import static se.studiegrupp7.listaHighscore.PlayerStat.*;
 
-public class ScoreMenu implements Menu, Serializable {
+public class ScoreMenu implements Menu {
     Scanner scanner = new Scanner(System.in);
     Menu menu = new StartMeny();
 
@@ -21,7 +23,7 @@ public class ScoreMenu implements Menu, Serializable {
     }
 
     @Override
-    public void chooses(int input) throws IOException {
+    public void chooses(int input) {
         Menu menuScore = new ScoreMenu();
         switch (input) {
             case 1 -> {
@@ -45,7 +47,7 @@ public class ScoreMenu implements Menu, Serializable {
             }
         }
     }
-    public void playerStats() throws IOException {
+    public void playerStats() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Witch player do you want to se stats on?");
@@ -57,14 +59,20 @@ public class ScoreMenu implements Menu, Serializable {
         var random = new PlayerStat("Random Randy");
         var vowels = new PlayerStat("Vowel Woman");
 
-        FileInputStream fileInputStream = new FileInputStream("./scoreListFile.ser");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
         try {
+            FileInputStream fileInputStream = new FileInputStream("./scoreListFile.ser");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }objectInputStream.close();
-        fileInputStream.close();
+        }
+
+
 
 
         player.countSecond();
