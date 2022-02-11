@@ -12,9 +12,9 @@ public class ScoreMenu implements Menu {
 
     @Override
     public void display() {
-        System.out.println("press 1 to players stat");
-        System.out.println("press 2 for total stat");
-        System.out.println("press 3 to back to start menu");
+        System.out.println("press 1 to players stats");
+        System.out.println("press 2 for previous tournaments");
+        System.out.println("press 3 to go back to start menu");
     }
 
     @Override
@@ -22,12 +22,7 @@ public class ScoreMenu implements Menu {
         Menu menuScore = new ScoreMenu();
         switch (input) {
             case 1 -> {
-                System.out.println("player stat");
-                for (List<String> list:tournamentStats) {
-                    for (String s:list) {
-                        System.out.println(s);
-                    }
-                }
+                System.out.println("Player stats");
                 playerStats();
                 System.out.println();
                 menuScore.display();
@@ -35,7 +30,14 @@ public class ScoreMenu implements Menu {
                 menuScore.chooses(input, tournamentStats);
             }
             case 2 -> {
-                System.out.println("total stat");
+                System.out.println("Previous tournaments [Left to Right]");
+                for (List<String> list:tournamentStats) {
+                    for (String s:list) {
+                        System.out.print(s + ", ");
+                    }
+                    System.out.println();
+                }
+                System.out.println();
                 menuScore.display();
                 input = scanner.nextInt();
                 menuScore.chooses(input, tournamentStats);
