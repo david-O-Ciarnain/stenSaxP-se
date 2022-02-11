@@ -1,6 +1,8 @@
 package se.studiegrupp7.menuer;
 
 import se.studiegrupp7.MatchMaker;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class StartMeny implements Menu {
@@ -14,7 +16,7 @@ public class StartMeny implements Menu {
     }
 
     @Override
-    public void chooses(int input) {
+    public void chooses(int input) throws IOException {
             switch (input) {
                 case 1 -> {
                     MatchMaker.startTournament();

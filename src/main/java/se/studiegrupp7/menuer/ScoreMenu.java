@@ -1,9 +1,10 @@
 package se.studiegrupp7.menuer;
 
 import se.studiegrupp7.listaHighscore.PlayerStat;
+import se.studiegrupp7.listaHighscore.TournamentStats;
 
-import javax.imageio.IIOException;
 import java.io.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -45,6 +46,7 @@ public class ScoreMenu implements Menu, Serializable {
             }
         }
     }
+
     public void playerStats() throws IOException {
         Scanner scanner = new Scanner(System.in);
 
@@ -59,12 +61,21 @@ public class ScoreMenu implements Menu, Serializable {
 
         FileInputStream fileInputStream = new FileInputStream("./scoreListFile.ser");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        TournamentStats tournamentStats = null;
         try {
-            objectInputStream.readObject();
+            tournamentStats = (TournamentStats) objectInputStream.readObject();
+
+
+            String player1 = tournamentStats.getName();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }objectInputStream.close();
+        }
+        objectInputStream.close();
         fileInputStream.close();
+
+
+        List<TournamentStats> sortedList = List.of(Objects.requireNonNull(tournamentStats));
+        sortedList.forEach(System.out::println);
 
 
         player.countSecond();
@@ -74,28 +85,27 @@ public class ScoreMenu implements Menu, Serializable {
         player.countWin();
 
 
-
         date.countFourth();
         random.countFourth();
         vowels.countThird();
 
-        if(Objects.equals(name,"Sven".toLowerCase())){
+        if (Objects.equals(name, "Sven".toLowerCase())) {
             bestPlace(player);
             worstPlace(player);
             averagePlace(player);
         }
 
-        if(Objects.equals(name, "Minute Man".toLowerCase())){
+        if (Objects.equals(name, "Minute Man".toLowerCase())) {
             bestPlace(date);
             worstPlace(date);
             averagePlace(date);
         }
-        if(Objects.equals(name,"Vowel Woman".toLowerCase())){
+        if (Objects.equals(name, "Vowel Woman".toLowerCase())) {
             bestPlace(random);
             worstPlace(random);
             averagePlace(random);
         }
-        if(Objects.equals(name,"Random Randy".toLowerCase())){
+        if (Objects.equals(name, "Random Randy".toLowerCase())) {
             bestPlace(vowels);
             worstPlace(vowels);
             averagePlace(vowels);
