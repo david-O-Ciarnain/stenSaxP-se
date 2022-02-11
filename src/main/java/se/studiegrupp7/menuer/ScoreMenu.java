@@ -12,7 +12,7 @@ public class ScoreMenu implements Menu {
 
     @Override
     public void display() {
-        System.out.println("press 1 to players stats");
+        System.out.println("press 1 for player stats");
         System.out.println("press 2 for previous tournaments");
         System.out.println("press 3 to go back to start menu");
     }
