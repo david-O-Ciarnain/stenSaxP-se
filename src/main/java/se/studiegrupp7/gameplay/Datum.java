@@ -20,6 +20,5 @@ public class Datum implements Behaviors {
             move = "Scissor";
             return move.toLowerCase();
         }
-
     }
 }

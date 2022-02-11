@@ -22,7 +22,9 @@ public class PlayerStat implements Serializable {
         this.playerName = playerName;
     }
 
-
+    public void setPlaceList(List<Integer> placeList) {
+        this.placeList = placeList;
+    }
 
     public String getPlayerName() {
 
@@ -33,6 +35,8 @@ public class PlayerStat implements Serializable {
     public List<Integer> getPlaceList() {
         return placeList;
     }
+
+
 
 
     @Override

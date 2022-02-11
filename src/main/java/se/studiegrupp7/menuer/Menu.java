@@ -1,8 +1,8 @@
 package se.studiegrupp7.menuer;
 
-import java.io.IOException;
+import java.util.List;
 
 public interface Menu {
     void display();
-    void chooses(int input) throws IOException;
+    void chooses(int input, List<List<String>> tournamentStats);
 }

@@ -1,7 +1,7 @@
 package se.studiegrupp7;
 
-
 import se.studiegrupp7.gameplay.*;
+
 
 
 import java.io.*;
@@ -9,7 +9,6 @@ import java.util.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MatchMaker implements Serializable {
 
@@ -25,12 +24,13 @@ public class MatchMaker implements Serializable {
     }
 
     public static void startTournament() {
+    public static List<String> startTournament() {
         Scanner scanner = new Scanner(System.in);
-       /* System.out.println("What is your name?");
-        String userName = scanner.nextLine(); */
+        System.out.println("What is your name?");
+        String userName = scanner.nextLine();
 
         List<CreateBot> participants = new ArrayList<>();
-        participants.add(new CreateBot(new Player(), "nej", 0));
+        participants.add(new CreateBot(new Player(), userName, 0));
         participants.add(new CreateBot(new Datum(), "Minute Man", 0));
         participants.add(new CreateBot(new Vokaler(), "Vowel Woman", 0));
         participants.add(new CreateBot(new RandomBot(), "Random Randy", 0));
@@ -57,7 +57,7 @@ public class MatchMaker implements Serializable {
 
             for (int idx = 1; idx < halfSize; idx++) {
                 int firstTeam = (round + idx) % opponentsSize;
-                int secondTeam = (round + opponentsSize - idx) % opponentsSize;
+                int secondTeam = (round  + opponentsSize - idx) % opponentsSize;
                 System.out.println(opponents.get(firstTeam).getName() + " vs " + opponents.get(secondTeam).getName());
                 Thread thread2 = new Thread(new GameStart(opponents.get(firstTeam), opponents.get(secondTeam))); // In thread 2
                 thread2.start();
@@ -70,8 +70,11 @@ public class MatchMaker implements Serializable {
         }
 
         LocalDateTime dateTime = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy MMMM dd - HH:mm:ss");
+        String dateTimeFormatted = dateTimeFormatter.format(dateTime);
 
-        List<CreateBot> sortedList = participants.stream()
+        List<String> sortedList = participants
+                .stream()
                 .sorted(Comparator.comparing(CreateBot::getScore).reversed())
                 .collect(Collectors.toList());
 
@@ -163,76 +166,10 @@ public class MatchMaker implements Serializable {
 
 
     public String getPlayerName() {
+                .map(CreateBot::getName)
+                .toList();
 
-        return playerName;
+        List<String> tournamentStats = List.of(dateTimeFormatted, sortedList.get(0), sortedList.get(1), sortedList.get(2), sortedList.get(3));
+        return tournamentStats;
     }
-
-
-    public List<Integer> getPlaceList() {
-        return placeList;
-    }
-
-
-    @Override
-    public String toString() {
-        return "PlayerStat{" +
-                "playerName=' " + playerName + '\'' +
-                ", winCount= " + winCount +
-                ", second= " + second +
-                ", third= " + third +
-                ", fourth= " + fourth +
-                '}';
-    }
-
-    public void countWin() {
-
-        placeList.add(winCount);
-    }
-
-    public void countSecond() {
-
-        placeList.add(second);
-
-    }
-
-    public void countThird() {
-
-        placeList.add(third);
-    }
-
-    public void countFourth() {
-        placeList.add(fourth);
-    }
-
-
-    public static void bestPlace(MatchMaker stat) {
-
-        stat.getPlaceList().stream().min(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " best place is: " + x));
-    }
-
-    public static void worstPlace(MatchMaker stat) {
-
-        stat.getPlaceList().stream().max(Integer::compareTo).ifPresent(x -> System.out.println(stat.getPlayerName() + " worst place is: " + x));
-    }
-
-    public static void averagePlace(MatchMaker stat) {
-
-        stat.getPlaceList().stream()
-                .mapToDouble(Integer::doubleValue)
-                .average()
-                .ifPresent((i) -> {
-                    if (i > 0 && i < 1.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Etta");
-                    else if (i > 1.51 && i < 2.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Tvåa");
-                    else if (i > 2.51 && i < 3.5)
-                        System.out.println(stat.getPlayerName() + " Average Placering: " + "Trea");
-                    else System.out.println(stat.getPlayerName() + " Average Placering: " + "Fyra");
-                });
-    }
-
-
 }
-
-
-
