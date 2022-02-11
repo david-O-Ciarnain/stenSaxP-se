@@ -1,12 +1,6 @@
 package se.studiegrupp7.menuer;
 
 import se.studiegrupp7.MatchMaker;
-import se.studiegrupp7.TestBot;
-import se.studiegrupp7.gameplay.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class StartMeny implements Menu {
@@ -40,19 +34,5 @@ public class StartMeny implements Menu {
                     System.exit(0);
                 }
             }
-        }
-
-        private String randomMove() {
-            Random random = new Random();
-            int generated = random.nextInt(3);
-            String randomMove = "";
-            if (generated == 0) {
-                randomMove = "rock";
-            } else if (generated == 1) {
-                randomMove = "scissor";
-            } else {
-                randomMove = "paper";
-            }
-            return randomMove;
         }
     }

@@ -1,8 +1,10 @@
 package se.studiegrupp7.gameplay;
 
-public class CreateBot {
+import java.io.Serializable;
 
-    private Behaviors behaviors;
+public class CreateBot implements Serializable {
+
+    private final Behaviors behaviors;
     String name;
     int score;
 
@@ -12,6 +14,10 @@ public class CreateBot {
 
     public int getScore() {
         return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public CreateBot(Behaviors behaviors, String name, int score){

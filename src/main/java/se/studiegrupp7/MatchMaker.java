@@ -1,10 +1,17 @@
 package se.studiegrupp7;
 
 import se.studiegrupp7.gameplay.*;
-import java.util.ArrayList;
-import java.util.List;
+import se.studiegrupp7.listaHighscore.PlayerStat;
 
-public class MatchMaker {
+import javax.imageio.IIOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class MatchMaker implements Serializable {
 
     public static void startTournament() {
 
@@ -47,6 +54,23 @@ public class MatchMaker {
                 }
             }
         }
-        participants.forEach(System.out::println);
+        List<String> sortedList = participants.stream()
+                .sorted(Comparator.comparing(CreateBot::getScore).reversed())
+                .map(CreateBot::getName)
+                .toList();
+
+        //List<String> secondList = new ArrayList<>(sortedList);
+
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("./scoreListFile.ser");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(sortedList);
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -11,18 +11,18 @@ public class RandomBot implements Behaviors {
         String move;
 
         switch (number) {
-            case 1:
+            case 1 -> {
                 move = "Rock";
                 return move.toLowerCase();
-
-            case 2:
+            }
+            case 2 -> {
                 move = "Paper";
                 return move.toLowerCase();
-
-            default:
+            }
+            default -> {
                 move = "Scissor";
                 return move.toLowerCase();
-
+            }
         }
     }
 }

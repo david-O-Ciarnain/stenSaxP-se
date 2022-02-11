@@ -2,12 +2,13 @@ package se.studiegrupp7.menuer;
 
 import se.studiegrupp7.listaHighscore.PlayerStat;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Scanner;
 
 import static se.studiegrupp7.listaHighscore.PlayerStat.*;
 
-public class ScoreMenu implements Menu {
+public class ScoreMenu implements Menu, Serializable {
     Scanner scanner = new Scanner(System.in);
     Menu menu = new StartMeny();
 
