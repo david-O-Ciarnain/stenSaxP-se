@@ -1,13 +1,10 @@
 package se.studiegrupp7.listaHighscore;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class PlayerStat implements Serializable {
-
 
     private final String playerName;
     private final int winCount = 1;
@@ -15,7 +12,6 @@ public class PlayerStat implements Serializable {
     private final int third = 3;
     private final int fourth = 4;
     List<Integer> placeList = new ArrayList<>();
-
 
     public PlayerStat(String playerName) {
 
@@ -31,13 +27,9 @@ public class PlayerStat implements Serializable {
         return playerName;
     }
 
-
     public List<Integer> getPlaceList() {
         return placeList;
     }
-
-
-
 
     @Override
     public String toString() {
@@ -96,8 +88,6 @@ public class PlayerStat implements Serializable {
                     else System.out.println(stat.getPlayerName() + " Average Placering: " + "Fyra");
                 });
     }
-
-
 }
 
 

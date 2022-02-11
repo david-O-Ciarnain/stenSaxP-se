@@ -1,6 +1,7 @@
 package se.studiegrupp7.menuer;
 
 import se.studiegrupp7.MatchMaker;
+import java.util.List;
 import java.util.Scanner;
 
 public class StartMeny implements Menu {
@@ -14,20 +15,20 @@ public class StartMeny implements Menu {
     }
 
     @Override
-    public void chooses(int input) {
+    public void chooses(int input, List<List<String>> tournamentStats) {
             switch (input) {
                 case 1 -> {
-                    MatchMaker.startTournament();
+                    tournamentStats.add(MatchMaker.startTournament());
                     Menu menu = new StartMeny();
                     menu.display();
                     input = scanner.nextInt();
-                    menu.chooses(input);
+                    menu.chooses(input, tournamentStats);
                 }
                 case 2 -> {
                     Menu score = new ScoreMenu();
                     score.display();
                     input = scanner.nextInt();
-                    score.chooses(input);
+                    score.chooses(input, tournamentStats);
                 }
                 case 3 -> {
                     System.out.println("you have exit the game ");

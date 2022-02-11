@@ -1,8 +1,9 @@
 package se.studiegrupp7;
 
 import se.studiegrupp7.gameplay.*;
-import se.studiegrupp7.listaHighscore.TournamentStats;
+
 import java.io.*;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class MatchMaker implements Serializable {
 
-    public static void startTournament() {
+    public static List<String> startTournament() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name?");
         String userName = scanner.nextLine();
@@ -56,31 +57,16 @@ public class MatchMaker implements Serializable {
         }
 
         LocalDateTime dateTime = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy MMMM dd - HH:mm:ss");
+        String dateTimeFormatted = dateTimeFormatter.format(dateTime);
 
-        /*List<String> sortedList = participants.stream()
+        List<String> sortedList = participants
+                .stream()
                 .sorted(Comparator.comparing(CreateBot::getScore).reversed())
                 .map(CreateBot::getName)
-                .toList();*/
+                .toList();
 
-        List<TournamentStats> tournamentStats = List.of(
-                new TournamentStats(participants.get(0).getName(), participants.get(0).getScore(), dateTime),
-                new TournamentStats(participants.get(1).getName(), participants.get(1).getScore(), dateTime),
-                new TournamentStats(participants.get(2).getName(), participants.get(2).getScore(), dateTime),
-                new TournamentStats(participants.get(3).getName(), participants.get(3).getScore(), dateTime)
-        );
-
-        //List<String> secondList = new ArrayList<>(sortedList);
-
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream("./scoreListFile.ser");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(tournamentStats);
-            objectOutputStream.close();
-            fileOutputStream.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        List<String> tournamentStats = List.of(dateTimeFormatted, sortedList.get(0), sortedList.get(1), sortedList.get(2), sortedList.get(3));
+        return tournamentStats;
     }
 }

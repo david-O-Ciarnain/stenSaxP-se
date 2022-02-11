@@ -11,5 +11,5 @@ public class Player implements Behaviors{
         move = scanner.nextLine().toLowerCase();
         System.out.println("You chose " + move);
         return move;
-        }
     }
+}
